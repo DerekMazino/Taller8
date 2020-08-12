@@ -1,4 +1,4 @@
-package com.macade.taller8.controller;
+	package com.macade.taller8.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ public class UserController {
 	public String index() {
 		return "index";
 	}
-	@GetMapping("/reistro.html")
+	@GetMapping("/registro")
 	public String registro() {
 		return "registro";
 	}
