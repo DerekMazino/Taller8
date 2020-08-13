@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <script src="js/jquery.js"></script>
-    <script src="js/script.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/script.js"></script>
 </head>
 <body>
     <h1>Registro de usuario</h1>
@@ -17,17 +17,11 @@
         <input type="text" id="apll" name="apellidos">
         <br>
         <label for="tdoc">Tipo de documento</label>
-        <select name="tdoc" id="tdoc">
-            <option value="carnetdip">Carné diplomatico</option>
-            <option value="cc">Cédula de ciudadanía</option>
-            <option value="cext">Cédula de extrangería</option>
-            <option value="nit">Número de identificación tributaria</option>
-            <option value="pin">Número de identificación personal</option>
-            <option value="pass">Pasaporte</option>
-            <option value="peresp">Permiso especial</option>
-            <option value="rcivil">Registro Civil</option>
-            <option value="ti">Tarjeta de Identidad</option>
-        </select>
+        <select>
+        	<option value="0">Seleccione...</option>
+			<option th:each="tipoDoc :${tipoDocument}" th:value="${tipoDoc.id}" th:text="${tipoDoc.name}">
+			</option>
+		</select>
         <br>
         <label for="doc">Documento</label>
         <input type="text" id="doc" name="doc">
