@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.macade.taller8.service.PersonService;
 import com.macade.taller8.repository.TipoDocReposotory;
+import com.macade.taller8.entity.Persona;
 @Controller
 public class PersonController {
 	@Autowired
@@ -24,7 +25,11 @@ public class PersonController {
 	}
 	@GetMapping("/personForm")
 	public String personForm(Model model) {
+		//Colocando anclaje MVC
+		model.addAttribute("personForm", new Persona());
+		model.addAttribute("personList", personService.getAllPersons());
 		model.addAttribute("tipoDocument", tipoDocRepository.findAll());
+		model.addAttribute("listTab","active");
 		return "person-form/person-view";
 	}
 }

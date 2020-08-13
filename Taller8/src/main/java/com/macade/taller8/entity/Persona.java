@@ -48,6 +48,8 @@ public class Persona implements Serializable{
 	@Column
 	private String city;
 	@Column
+	private String dateB;
+	@Column
 	private String email;
 	@Column
 	private String phone;
@@ -58,6 +60,16 @@ public class Persona implements Serializable{
 	
 	@Transient
 	private String confirmPassword;
+	@Column
+	private String cityA;
+	
+	public String getCityA() {
+		return cityA;
+	}
+
+	public void setCityA(String cityA) {
+		this.cityA = cityA;
+	}
 
 	public Long getId() {
 		return id;
@@ -147,11 +159,20 @@ public class Persona implements Serializable{
 		this.confirmPassword = confirmPassword;
 	}
 
+	public String getDateB() {
+		return dateB;
+	}
+
+	public void setDateB(String dateB) {
+		this.dateB = dateB;
+	}
+
 	@Override
 	public String toString() {
 		return "Persona [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", tipo=" + tipo
-				+ ", document=" + document + ", city=" + city + ", email=" + email + ", phone=" + phone + ", username="
-				+ username + ", password=" + password + ", confirmPassword=" + confirmPassword + "]";
+				+ ", document=" + document + ", city=" + city + ", dateB=" + dateB + ", email=" + email + ", phone="
+				+ phone + ", username=" + username + ", password=" + password + ", confirmPassword=" + confirmPassword
+				+ ", cityA=" + cityA + "]";
 	}
 
 	@Override
@@ -159,7 +180,9 @@ public class Persona implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
+		result = prime * result + ((cityA == null) ? 0 : cityA.hashCode());
 		result = prime * result + ((confirmPassword == null) ? 0 : confirmPassword.hashCode());
+		result = prime * result + ((dateB == null) ? 0 : dateB.hashCode());
 		result = prime * result + ((document == null) ? 0 : document.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
@@ -186,10 +209,20 @@ public class Persona implements Serializable{
 				return false;
 		} else if (!city.equals(other.city))
 			return false;
+		if (cityA == null) {
+			if (other.cityA != null)
+				return false;
+		} else if (!cityA.equals(other.cityA))
+			return false;
 		if (confirmPassword == null) {
 			if (other.confirmPassword != null)
 				return false;
 		} else if (!confirmPassword.equals(other.confirmPassword))
+			return false;
+		if (dateB == null) {
+			if (other.dateB != null)
+				return false;
+		} else if (!dateB.equals(other.dateB))
 			return false;
 		if (document == null) {
 			if (other.document != null)
@@ -238,7 +271,6 @@ public class Persona implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
 
+	
 }

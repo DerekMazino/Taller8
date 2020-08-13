@@ -1,23 +1,23 @@
-<form class="form" role="form" autocomplete="off">
+<form class="form" role="form" autocomplete="off" th:object="${personForm}">
 	<!-- Nombres -->
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Nombres</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="text" >
+			<input class="form-control" type="text" th:field="${personForm.firstName}" >
 		</div>
 	</div>
 	<!-- Apellidos -->
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Apellidos</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="text" >
+			<input class="form-control" type="text" th:field="${personForm.lastName}">
 		</div>
 	</div>
 	<!-- Tipo Documento -->
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Tipo Documento</label>
 		<div class="col-lg-9">
-			<select class="form-control">
+			<select class="form-control" th:field="${personForm.tipo}">
         	<option value="0">Seleccione...</option>
 			<option th:each="tipoDoc :${tipoDocument}" th:value="${tipoDoc.id}" th:text="${tipoDoc.name}">
 			</option>
@@ -28,14 +28,14 @@
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Documento</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="text" >
+			<input class="form-control" type="text" th:field="${personForm.document}">
 		</div>
 	</div>
 	<!-- Lugar de Nacimiento -->
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Lugar de Nacimiento</label>
 		<div class="col-lg-9">
-			<select class="form-control" name="lnac" id="lnac">
+			<select class="form-control" name="lnac" id="lnac" th:field="${personForm.city}">
             <option value="l_nac">Seleccione ...</option>
         </select>
 		</div>
@@ -44,49 +44,49 @@
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Fecha de Nacimiento</label>
 		<div class="col-lg-9">
-			<input type="date" class="form-control" id="fnac" name="fnac" min="1900-01-01">
+			<input type="date" class="form-control" id="fnac" name="fnac" min="1900-01-01" th:field="${personForm.dateB}">
 		</div>
 	</div>
 	<!-- Email -->
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Email</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="email">
+			<input class="form-control" type="email" th:field="${personForm.email}">
 		</div>
 	</div>
 	<!-- Telefono -->
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Telefono</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="text" >
+			<input class="form-control" type="text" th:field="${personForm.phone}">
 		</div>
 	</div>
 	<!-- Usuario -->
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Username</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="text">
+			<input class="form-control" type="text" th:field="${personForm.username}">
 		</div>
 	</div>
 	<!-- Password -->
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Password</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="password">
+			<input class="form-control" type="password" th:field="${personForm.password}">
 		</div>
 	</div>
 	<!-- Confirmar -->
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Confirmar</label>
 		<div class="col-lg-9">
-			<input class="form-control" type="password" >
+			<input class="form-control" type="password" th:field="${personForm.confirmPassword}">
 		</div>
 	</div>
 	<!-- Lugar de Residencia -->
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Lugar de Residencia</label>
 		<div class="col-lg-9">
-			<select class="form-control" name="lres" id="lres">
+			<select class="form-control" name="lres" id="lres" th:field="${personForm.cityA}">
             	<option value="lres">Seleccione ...</option>
         	</select>
 		</div>
