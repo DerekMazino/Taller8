@@ -1,0 +1,101 @@
+<form class="form" role="form" autocomplete="off">
+	<!-- Nombres -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Nombres</label>
+		<div class="col-lg-9">
+			<input class="form-control" type="text" >
+		</div>
+	</div>
+	<!-- Apellidos -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Apellidos</label>
+		<div class="col-lg-9">
+			<input class="form-control" type="text" >
+		</div>
+	</div>
+	<!-- Tipo Documento -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Tipo Documento</label>
+		<div class="col-lg-9">
+			<select class="form-control">
+        	<option value="0">Seleccione...</option>
+			<option th:each="tipoDoc :${tipoDocument}" th:value="${tipoDoc.id}" th:text="${tipoDoc.name}">
+			</option>
+		</select>
+		</div>
+	</div>
+	<!-- Documento -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Documento</label>
+		<div class="col-lg-9">
+			<input class="form-control" type="text" >
+		</div>
+	</div>
+	<!-- Lugar de Nacimiento -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Lugar de Nacimiento</label>
+		<div class="col-lg-9">
+			<select class="form-control" name="lnac" id="lnac">
+            <option value="l_nac">Seleccione ...</option>
+        </select>
+		</div>
+	</div>
+	<!-- Fecha de Nacimiento -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Fecha de Nacimiento</label>
+		<div class="col-lg-9">
+			<input type="date" class="form-control" id="fnac" name="fnac" min="1900-01-01">
+		</div>
+	</div>
+	<!-- Email -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Email</label>
+		<div class="col-lg-9">
+			<input class="form-control" type="email">
+		</div>
+	</div>
+	<!-- Telefono -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Telefono</label>
+		<div class="col-lg-9">
+			<input class="form-control" type="text" >
+		</div>
+	</div>
+	<!-- Usuario -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Username</label>
+		<div class="col-lg-9">
+			<input class="form-control" type="text">
+		</div>
+	</div>
+	<!-- Password -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Password</label>
+		<div class="col-lg-9">
+			<input class="form-control" type="password">
+		</div>
+	</div>
+	<!-- Confirmar -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Confirmar</label>
+		<div class="col-lg-9">
+			<input class="form-control" type="password" >
+		</div>
+	</div>
+	<!-- Lugar de Residencia -->
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Lugar de Residencia</label>
+		<div class="col-lg-9">
+			<select class="form-control" name="lres" id="lres">
+            	<option value="lres">Seleccione ...</option>
+        	</select>
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-lg-12 text-center">
+			<input type="reset" class="btn btn-secondary" value="Cancel">
+			<input type="button" class="btn btn-primary"
+				value="Save Changes">
+		</div>
+	</div>
+</form>

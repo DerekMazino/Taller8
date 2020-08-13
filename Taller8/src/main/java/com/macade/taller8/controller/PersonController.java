@@ -22,4 +22,9 @@ public class PersonController {
 		model.addAttribute("tipoDocument", tipoDocRepository.findAll());
 		return "registro";
 	}
+	@GetMapping("/personForm")
+	public String personForm(Model model) {
+		model.addAttribute("tipoDocument", tipoDocRepository.findAll());
+		return "person-form/person-view";
+	}
 }
