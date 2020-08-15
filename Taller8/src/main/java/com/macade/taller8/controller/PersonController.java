@@ -1,9 +1,17 @@
 package com.macade.taller8.controller;
 
+
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.macade.taller8.service.PersonService;
 import com.macade.taller8.repository.TipoDocReposotory;
@@ -18,11 +26,11 @@ public class PersonController {
 	public String index() {
 		return "index";
 	}
-	@GetMapping("/registro")
+	/*@GetMapping("/registro")
 	public String registro(Model model) {
 		model.addAttribute("tipoDocument", tipoDocRepository.findAll());
 		return "registro";
-	}
+	}*/
 	@GetMapping("/personForm")
 	public String personForm(Model model) {
 		//Colocando anclaje MVC
@@ -32,4 +40,30 @@ public class PersonController {
 		model.addAttribute("listTab","active");
 		return "person-form/person-view";
 	}
+	@PostMapping("/personForm")
+	public String createPerson(@Valid @ModelAttribute("personForm")Persona person, BindingResult result, ModelMap model) {
+		System.out.print("Bandera 1\n");
+		if(result.hasErrors()) {
+			model.addAttribute("personForm", person);
+			model.addAttribute("formTab","active");
+			System.out.print("Bandera 2\n");
+		}
+		else {
+			try {
+				personService.createPerson(person);
+				model.addAttribute("personForm", new Persona());
+				model.addAttribute("listTab","active");
+			}catch (Exception e) {
+				model.addAttribute("formErrorMessage", e.getMessage());
+				model.addAttribute("personForm", person);
+				model.addAttribute("formTab","active");
+				model.addAttribute("personList", personService.getAllPersons());
+				model.addAttribute("tipoDocument", tipoDocRepository.findAll());
+			}
+		}
+		model.addAttribute("personList", personService.getAllPersons());
+		model.addAttribute("tipoDocument", tipoDocRepository.findAll());
+		return "person-form/person-view";
+	}
+	
 }

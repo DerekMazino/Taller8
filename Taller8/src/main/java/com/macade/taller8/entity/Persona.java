@@ -10,13 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
-//import javax.validation.constraints.NotBlank;
-//import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Size;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -34,8 +33,12 @@ public class Persona implements Serializable{
 	private Long id;
 	
 	@Column
+	@NotBlank
+	@Size(min=5, max=8, message="No se cumplen las reglas de la longitud")
 	private String firstName;
 	@Column
+	@NotBlank
+	@Size(min=5, max=8, message="No se cumplen las reglas de la longitud")
 	private String lastName;
 	@Column
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -44,21 +47,30 @@ public class Persona implements Serializable{
 	inverseJoinColumns=@JoinColumn(name="tipodocumento_id"))
 	private Set<TipoDocumento> tipo;
 	@Column
+	@NotBlank
 	private String document;
 	@Column
 	private String city;
 	@Column
+	@NotBlank
 	private String dateB;
 	@Column
+	@Email
+	@NotBlank
 	private String email;
 	@Column
 	private String phone;
-	@Column
+	@Column(unique=true)
+	@NotBlank
+	@Size(min=5, max=8, message="No se cumplen las reglas de la longitud")
 	private String username;
 	@Column
+	@NotBlank
+	@Size(min=5, max=8, message="No se cumplen las reglas de la longitud")
 	private String password;
 	
 	@Transient
+	@NotBlank
 	private String confirmPassword;
 	@Column
 	private String cityA;
