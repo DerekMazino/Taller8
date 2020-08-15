@@ -8,4 +8,8 @@ public interface PersonService {
 	public Iterable<Persona> getAllPersons();
 
 	public Persona createPerson(Persona person) throws Exception;
+	
+	public Persona getPersonById(Long id) throws Exception;
+	
+	public Persona updatePersona(Persona fromPerson) throws Exception;
 }

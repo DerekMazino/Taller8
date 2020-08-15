@@ -41,5 +41,30 @@ public class PersonServiceImpl implements PersonService{
 		}
 		return person;
 	}
+	@Override
+	public Persona getPersonById(Long id) throws Exception {
+
+		return repository.findById(id).orElseThrow(() -> new Exception("El ususario para editar no existe"));
+	}
+	@Override
+	public Persona updatePersona(Persona fromPerson) throws Exception {
+		Persona toPerson = getPersonById(fromPerson.getId());
+		mapPerson(fromPerson, toPerson);
+		return repository.save(toPerson);
+	}
+	
+
+	protected void mapPerson(Persona from,Persona to) {
+		to.setUsername(from.getUsername());
+		to.setFirstName(from.getFirstName());
+		to.setLastName(from.getLastName());
+		to.setEmail(from.getEmail());
+		to.setTipo(from.getTipo());
+		to.setCity(from.getCity());
+		to.setCityA(from.getCityA());
+		to.setPhone(from.getPhone());
+		to.setDateB(from.getDateB());
+		to.setDocument(from.getDocument());
+	}
 	
 }
