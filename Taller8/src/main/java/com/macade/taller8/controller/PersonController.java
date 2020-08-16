@@ -111,4 +111,14 @@ public class PersonController {
 	public String cancelEditPerson(ModelMap model) {
 		return "redirect:/personForm";
 	}
+	
+	@GetMapping("/deletePerson/{id}")
+	public String deletePerson(Model model, @PathVariable(name="id")Long id) {
+		try {
+			personService.deletePerson(id);
+		} catch (Exception e) {
+			model.addAttribute("listErrorMessage",e.getMessage());
+		}
+		return personForm(model);
+	}
 }

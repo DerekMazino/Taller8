@@ -12,4 +12,6 @@ public interface PersonService {
 	public Persona getPersonById(Long id) throws Exception;
 	
 	public Persona updatePersona(Persona fromPerson) throws Exception;
+	
+	public void deletePerson(Long id) throws Exception;
 }

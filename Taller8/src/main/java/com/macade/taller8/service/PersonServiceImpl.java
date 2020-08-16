@@ -44,7 +44,7 @@ public class PersonServiceImpl implements PersonService{
 	@Override
 	public Persona getPersonById(Long id) throws Exception {
 
-		return repository.findById(id).orElseThrow(() -> new Exception("El ususario para editar no existe"));
+		return repository.findById(id).orElseThrow(() -> new Exception("El ususario no existe"));
 	}
 	@Override
 	public Persona updatePersona(Persona fromPerson) throws Exception {
@@ -66,5 +66,12 @@ public class PersonServiceImpl implements PersonService{
 		to.setDateB(from.getDateB());
 		to.setDocument(from.getDocument());
 	}
+	@Override
+	public void deletePerson(Long id) throws Exception {
+		Persona person = getPersonById(id);
+		repository.delete(person);
+	}
+	
+	
 	
 }
