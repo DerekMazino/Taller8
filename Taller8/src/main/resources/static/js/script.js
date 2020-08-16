@@ -28,4 +28,14 @@ Array.prototype.unique=function(a){
     return function(){return this.filter(a)}}(function(a,b,c){return c.indexOf(a,b+1)<0
 });
 
+function confirmDelete(id){
+	$('#deleteModal').modal('show');
+	$("#personIdHiddenInput").val(id);
+}
+
+function deletePerson(){
+	var id = $("#personIdHiddenInput").val();
+    window.location = "deletePerson/"+id;
+}
+
     
